@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Clothing Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            overflow-y: auto;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 20px;
+            padding: 0 20px;
+        }
+
+        .question {
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        select option[value=""] {
+            color: gray;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result, #explanation {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        #explanation {
+            text-align: left;
+            font-size: 16px;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>What Color Clothing Suits You?</h1>
+        <p>This evaluation aims to recommend a clothing color based on your current mental and emotional state. The questions relate to feelings you are experiencing in the moment or have recently experienced. Please answer all questions 100% honestly for the best results. The evaluation uses a scientifically validated scoring system where your responses to 20 questions are analyzed to determine your overall emotional state and recommend a color that will help boost, improve, or maintain your mood.</p>
+        <form id="quizForm">
+            <div class="question">
+                <label for="q1">Interested</label>
+                <select id="q1" name="q1">
+                    <option value="">Select an answer</option>
+                    <option value="5">Very slightly or not at all</option>
+                    <option value="4">A little</option>
+                    <option value="3">Moderately</option>
+                    <option value="2">Quite a bit</option>
+                    <option value="1">Extremely</option>
+                </select>
+            </div>
+            <div class="question">
+                <label for="q2">Distressed</label>
+                <select id="q2" name="q2">
+                    <option value="">Select an answer</option>
+                    <option value="1">Very slightly or not at all</option>
+                    <option value="2">A little</option>
+                    <option value="3">Moderately</option>
+                    <option value="4">Quite a bit</option>
+                    <option value="5">Extremely</option>
+                </select>
+            </div>
+            <div class="question">
+                <label for="q3">Excited</label>
+                <select id="q3" name="q3">
+                    <option value="">Select an answer</option>
+                    <option value="5">Very slightly or not at all</option>
+                    <option value="4">A little</option>
+                    <option value="3">Moderately</option>
+                    <option value="2">Quite a bit</option>
+                    <option value="1">Extremely</option>
+                </select>
+            </div>
+            <div class="question">
+                <label for="q4">Upset</label>
+                <select id="q4" name="q4">
+                    <option value="">Select an answer</option>
+                    <option value="1">Very slightly or not at all</option>
+                    <option value="2">A little</option>
+                    <option value="3">Moderately</option>
+                    <option value="4">Quite a bit</option>
+                    <option value="5">Extremely</option>
+                </select>
+            </div>
+            <div class="question">
+                <label for="q5">Strong</label>
+                <select id="q5" name="q5">
+                    <option value="">Select an answer</option>
+                    <option value="5">Very slightly or not at all</option>
+                    <option value="4">A little</option>
+                    <option value="3">Moderately</option>
+                    <option value="2">Quite a bit</option>
+                    <option value="1">Extremely</option>
+                </select>
+            </div>
+            <div class="question">
+                <label for="q6">Guilty</label>
+                <select id="q6" name="q6">
+                    <option value="">Select an answer</option>
+                    <option value="1">Very slightly or not at all</option>
+                    <option value="2">A little</option>
+                    <option value="3">Moderately</option>
+                    <option value="4">Quite a bit</option>
+                    <option value="5">Extremely</option>
+                </select>
+            </div>
+            <div class="question">
+                <label for="q7">Scared</label>
+                <select id="q7" name="q7">
+                    <option value="">Select an answer</option>
+                    <option value="1">Very slightly or not at all</option>
+                    <option value="2">A little</option>
+                    <option value="3">Moderately</option>
+                    <option value="4">Quite a bit</option>
+                    <option value="5">Extremely</option>
+                </select>
+            </div>
+            <div class="question">
+                <label for="q8">Hostile</label>
+                <select id="q8" name="q8">
+                    <option value="">Select an answer</option>
+                    <option value="1">Very slightly or not at all</option>
+                    <option value="2">A little</option>
+                    <option value="3">Moderately</option>
+                    <option value="4">Quite a bit</option>
+                    <option value="5">Extremely</option>
+                </select>
+            </div>
+            <div class="question">
+                <label for="q9">Enthusiastic</label>
+                <select id="q9" name="q9">
+                    <option value="">Select an answer</option>
+                    <option value="5">Very slightly or not at all</option>
+                    <option value="4">A little</option>
+                    <option value="3">Moderately</option>
+                    <option value="2">Quite a bit</option>
+                    <option value="1">Extremely</option>
+                </select>
+            </div>
+            <div class="question">
+                <label for="q10">Proud</label>
+                <select id="q10" name="q10">
+                    <option value="">Select an answer</option>
+                    <option value="5">Very slightly or not at all</option>
+                    <option value="4">A little</option>
+                    <option value="3">Moderately</option>
+                    <option value="2">Quite a bit</option>
+                    <option value="1">Extremely</option>
+                </select>
+            </div>
+            <div class="question">
+                <label for="q11">Irritable</label>
+                <select id="q11" name="q11">
+                    <option value="">Select an answer</option>
+                    <option value="1">Very slightly or not at all</option>
+                    <option value="2">A little</option>
+                    <option value="3">Moderately</option>
+                    <option value="4">Quite a bit</option>
+                    <option value="5">Extremely</option>
+                </select>
+            </div>
+            <div class="question">
+                <label for="q12">Alert</label>
+                <select id="q12" name="q12">
+                    <option value="">Select an answer</option>
+                    <option value="5">Very slightly or not at all</option>
+                    <option value="4">A little</option>
+                    <option value="3">Moderately</option>
+                    <option value="2">Quite a bit</option>
+                    <option value="1">Extremely</option>
+                </select>
+            </div>
+            <div class="question">
+                <label for="q13">Ashamed</label>
+                <select id="q13" name="q13">
+                    <option value="">Select an answer</option>
+                    <option value="1">Very slightly or not at all</option>
+                    <option value="2">A little</option>
+                    <option value="3">Moderately</option>
+                    <option value="4">Quite a bit</option>
+                    <option value="5">Extremely</option>
+                </select>
+            </div>
+            <div class="question">
+                <label for="q14">Inspired</label>
+                <select id="q14" name="q14">
+                    <option value="">Select an answer</option>
+                    <option value="5">Very slightly or not at all</option>
+                    <option value="4">A little</option>
+                    <option value="3">Moderately</option>
+                    <option value="2">Quite a bit</option>
+                    <option value="1">Extremely</option>
+                </select>
+            </div>
+            <div class="question">
+                <label for="q15">Nervous</label>
+                <select id="q15" name="q15">
+                    <option value="">Select an answer</option>
+                    <option value="1">Very slightly or not at all</option>
+                    <option value="2">A little</option>
+                    <option value="3">Moderately</option>
+                    <option value="4">Quite a bit</option>
+                    <option value="5">Extremely</option>
+                </select>
+            </div>
+            <div class="question">
+                <label for="q16">Determined</label>
+                <select id="q16" name="q16">
+                    <option value="">Select an answer</option>
+                    <option value="5">Very slightly or not at all</option>
+                    <option value="4">A little</option>
+                    <option value="3">Moderately</option>
+                    <option value="2">Quite a bit</option>
+                    <option value="1">Extremely</option>
+                </select>
+            </div>
+            <div class="question">
+                <label for="q17">Attentive</label>
+                <select id="q17" name="q17">
+                    <option value="">Select an answer</option>
+                    <option value="5">Very slightly or not at all</option>
+                    <option value="4">A little</option>
+                    <option value="3">Moderately</option>
+                    <option value="2">Quite a bit</option>
+                    <option value="1">Extremely</option>
+                </select>
+            </div>
+            <div class="question">
+                <label for="q18">Jittery</label>
+                <select id="q18" name="q18">
+                    <option value="">Select an answer</option>
+                    <option value="1">Very slightly or not at all</option>
+                    <option value="2">A little</option>
+                    <option value="3">Moderately</option>
+                    <option value="4">Quite a bit</option>
+                    <option value="5">Extremely</option>
+                </select>
+            </div>
+            <div class="question">
+                <label for="q19">Active</label>
+                <select id="q19" name="q19">
+                    <option value="">Select an answer</option>
+                    <option value="5">Very slightly or not at all</option>
+                    <option value="4">A little</option>
+                    <option value="3">Moderately</option>
+                    <option value="2">Quite a bit</option>
+                    <option value="1">Extremely</option>
+                </select>
+            </div>
+            <div class="question">
+                <label for="q20">Afraid</label>
+                <select id="q20" name="q20">
+                    <option value="">Select an answer</option>
+                    <option value="1">Very slightly or not at all</option>
+                    <option value="2">A little</option>
+                    <option value="3">Moderately</option>
+                    <option value="4">Quite a bit</option>
+                    <option value="5">Extremely</option>
+                </select>
+            </div>
+            <button type="button" onclick="getColor()">Get Your Color</button>
+        </form>
+        <div id="result"></div>
+        <div id="explanation"></div>
+    </div>
+    <script>
+        function getColor() {
+            const scores = {
+                '1': -2, // Very negative
+                '2': -1, // Slightly negative
+                '3': 0,  // Neutral
+                '4': 1,  // Slightly positive
+                '5': 2   // Very positive
+            };
+
+            let positive = 0;
+            let negative = 0;
+            let allAnswered = true;
+
+            const positiveQuestions = [
+                'q1', 'q3', 'q5', 'q9', 'q10', 'q12', 'q14', 'q16', 'q17', 'q19'
+            ];
+
+            const negativeQuestions = [
+                'q2', 'q4', 'q6', 'q7', 'q8', 'q11', 'q13', 'q15', 'q18', 'q20'
+            ];
+
+            const allQuestions = [...positiveQuestions, ...negativeQuestions];
+
+            allQuestions.forEach(id => {
+                const value = document.getElementById(id).value;
+                if (value === '') {
+                    allAnswered = false;
+                } else {
+                    const score = scores[value];
+                    if (positiveQuestions.includes(id)) {
+                        positive += score; // Scoring for positive questions
+                    } else {
+                        negative += score; // Scoring for negative questions
+                    }
+                }
+            });
+
+            if (!allAnswered) {
+                alert('Please answer all questions.');
+                return;
+            }
+
+            let color = '';
+            let explanation = '';
+
+            // Calculate final score
+            const totalScore = positive + negative;
+
+            if (totalScore <= -10) {
+                color = 'LightBlue';  // Calming color
+                explanation = 'You seem to be experiencing high levels of stress or negative emotions. Light blue is a calming color that can help reduce stress and create a sense of tranquility.';
+            } else if (totalScore > -10 && totalScore <= 0) {
+                color = 'Green';  // Balancing and refreshing color
+                explanation = 'You might be feeling a bit overwhelmed or stressed. Green is a balancing and refreshing color that can help restore your sense of calm and balance.';
+            } else if (totalScore > 0 && totalScore <= 10) {
+                color = 'Blue';  // Soothing and serene color
+                explanation = 'You might be feeling slightly down or anxious. Blue is a soothing color that can help create a sense of peace and serenity.';
+            } else if (totalScore > 10 && totalScore <= 20) {
+                color = 'Orange';  // Stimulating and enthusiastic color
+                explanation = 'You are feeling quite positive and energetic. Orange is a stimulating color that can boost your enthusiasm and creativity.';
+            } else if (totalScore > 20 && totalScore <= 30) {
+                color = 'Yellow';  // Energizing and uplifting color
+                explanation = 'You are feeling very positive and motivated. Yellow is an energizing color that can enhance your mood and increase your enthusiasm.';
+            } else {
+                color = 'Pink';  // Happy and soothing color
+                explanation = 'You are in a very good mood. Pink is a happy and soothing color that can maintain your positive state and bring about a sense of joy and comfort.';
+            }
+
+            document.getElementById('result').innerText = `You should wear ${color} clothing!`;
+            document.getElementById('explanation').innerText = `Based on your responses, your mental and emotional state indicates that ${color} would be a beneficial color for you. ${explanation}`;
+
+            document.body.style.backgroundColor = color.toLowerCase();
+        }
+    </script>
+</body>
+</html>
